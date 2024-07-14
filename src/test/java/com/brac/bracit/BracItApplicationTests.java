@@ -70,7 +70,7 @@ class BatteryControllerTest {
     public void testAddBatteries() throws Exception {
         when(batteryService.saveBatteries(anyList())).thenReturn(batteries);
 
-        mockMvc.perform(post("/api/v1/battery")
+        mockMvc.perform(post("/batteries")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("[{\"name\":\"Battery1\",\"postcode\":\"12345\",\"wattCapacity\":100}," +
                                 "{\"name\":\"Battery2\",\"postcode\":\"23456\",\"wattCapacity\":200}," +
@@ -99,7 +99,7 @@ class BatteryControllerTest {
 
         when(batteryService.getBatteriesByPostcodeRange("12345", "23456")).thenReturn(statistics);
 
-        mockMvc.perform(get("/api/v1/battery?postcodeRange=12345-23456"))
+        mockMvc.perform(get("/batteries?postcodeRange=12345-23456"))
                 .andExpect(status().isOk())
                 .andExpect(content().json("{\"batteryNames\":[\"Battery1\",\"Battery2\"],\"statistics\":{\"totalWattCapacity\":300,\"averageWattCapacity\":150}}"));
     }

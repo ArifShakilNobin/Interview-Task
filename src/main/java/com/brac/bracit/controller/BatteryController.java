@@ -15,7 +15,7 @@ import java.util.List;
 
 @Validated
 @RestController
-@RequestMapping("/api/v1/battery")
+@RequestMapping("/batteries")
 @RequiredArgsConstructor
 public class BatteryController {
 
